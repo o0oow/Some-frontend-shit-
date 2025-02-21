@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Анкета на визу в Таджикистан</title>
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        .document {
+            display: flex;
+            position: relative;
+            width: 210mm;
+            height: 297mm;
+            background: white;
+            padding: 50px 40px;
+            border: 2px solid black;
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+            background-image: url('ppp.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+        .header {
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 22px;
+            margin-bottom: 20px;
+           margin-top: 180px;
+           margin-left: 260px;
+        }
+        .photo-box {
+            width: 110px;
+            height: 140px;
+            margin-left: 80px;
+            margin-top: 120px;
+            border: 2px solid black;
+            position: absolute;
+            top: 40px;
+            left: 40px;
+            overflow: hidden; /* чтобы фото не вылезало */
+            text-align: center;
+            line-height: 140px;
+            font-size: 14px;
+            background: white;
+        }
+        .content {
+            position: absolute;
+            top: 150px;
+            margin-left:60px;
+            margin-top: 200px;
+            width: 100%;
+            text-align: left;
+            font-size: 16px;
+        }
+        .info {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            width: 80%;
+            
+        }
+        .label {
+            font-weight: bold;
+            width: 40%;
+            text-align: left;
+            padding-right: 5px;
+            padding: 5px;
+            
+        }
+        .value {
+            width: 55%;
+            border-bottom: 1px solid black;
+            min-height: 20px;
+            text-align: left;
+            padding-left: 5px;
+            white-space: normal;         /* Позволяем переносить слова */
+            word-wrap: break-word;       /* Перенос слов */
+            overflow-wrap: break-word;  
+        }
+        .multi-line {
+            width: 55%;
+            text-align: left;
+            padding-left: 5px;
+        }
+        .multi-line .line {
+            border-bottom: 1px solid black;
+            min-height: 20px;
+            display: block;
+        }
+        .footer {
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 150px;
+        }
+        .sss{
+            display: flex;
+        }
+    </style>
+</head>
+<body>
+    <div class="document">
+        <div class="sss"> <div class="header">ЗАЯВКА НА ВИЗУ В ТАДЖИКИСТАН</div>
+        <div class="photo-box" id="photo">Фото</div></div>
+       
+        <div class="content">
+            <div class="info"><span class="label">Фамилия (как в паспорте):</span> <span class="value" id="surname"></span></div>
+            <div class="info"><span class="label">Имя и отчество (как в паспорте):</span> <span class="value" id="fullName"></span></div>
+            <div class="info"><span class="label">Дата рождения:</span> <span class="value" id="dob"></span></div>
+            <div class="info"><span class="label">Место рождения:</span> <span class="value" id="birthPlace"></span></div>
+            <div class="info"><span class="label">Гражданство:</span> <span class="value" id="nationality"></span></div>
+            <div class="info"><span class="label">Номер паспорта:</span> <span class="value" id="passport"></span></div>
+            <div class="info"><span class="label">Дата выдачи паспорта:</span> <span class="value" id="passportIssue"></span></div>
+            <div class="info"><span class="label">Дата истечения паспорта:</span> <span class="value" id="passportExpiry"></span></div>
+            <div class="info"><span class="label">Email:</span> <span class="value" id="email"></span></div>
+            
+            <!-- Поле "Адрес проживания" с двумя линиями -->
+            <div class="info">
+                <span class="label">Адрес проживания:</span>
+                <span class="multi-line">
+                    <span class="line" id="address"></span>
+                    <span class="line"></span>
+                </span>
+            </div>
+
+            <div class="info"><span class="label">Контактный телефон:</span> <span class="value" id="phone"></span></div>
+            <div class="info"><span class="label">Цель поездки:</span> <span class="value" id="purpose"></span></div>
+
+            <!-- Поле "Дополнительная информация" с четырьмя линиями -->
+            <div class="info">
+                <span class="label">Дополнительная информация:</span>
+                <span class="multi-line">
+                    <span class="line" id="additionalInfo"></span>
+                    <span class="line"></span>
+                    <span class="line"></span>
+                    <span class="line"></span>
+                </span>
+            </div>
+        </div>
+        <div class="footer">Контактные номера фирмы: +992 123 456 789 | +992 987 654 321</div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

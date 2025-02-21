@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Форма подачи визы</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        .form-container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+            width: 500px;
+            max-width: 100%;
+            text-align: left;
+            border: 2px solid black;
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 22px;
+        }
+        label {
+            font-weight: bold;
+            display: block;
+            margin-top: 10px;
+        }
+        input, select, textarea {
+            width: calc(100% - 16px);
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            display: block;
+        }
+        textarea {
+            height: 80px;
+            resize: none;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 20px;
+            background: blue;
+            color: white;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background: darkblue;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="form-container">
+        <h2>Анкета на визу в Таджикистан</h2>
+        <form id="visaForm">
+            <label for="surname">Фамилия (как в паспорте):</label>
+            <input type="text" id="surname" name="surname" required>
+
+            <label for="fullName">Имя и отчество (как в паспорте):</label>
+            <input type="text" id="fullName" name="fullName" required>
+
+            <label for="dob">Дата рождения:</label>
+            <input type="date" id="dob" name="dob" required>
+
+            <label for="birthPlace">Место рождения:</label>
+            <input type="text" id="birthPlace" name="birthPlace" required>
+
+            <label for="nationality">Гражданство:</label>
+            <input type="text" id="nationality" name="nationality" required>
+
+            <label for="passport">Номер паспорта:</label>
+            <input type="text" id="passport" name="passport" required>
+
+            <label for="passportIssue">Дата выдачи паспорта:</label>
+            <input type="date" id="passportIssue" name="passportIssue" required>
+
+            <label for="passportExpiry">Дата истечения паспорта:</label>
+            <input type="date" id="passportExpiry" name="passportExpiry" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="address">Адрес проживания:</label>
+            <input type="text" id="address" name="address" required>
+
+            <label for="phone">Контактный телефон:</label>
+            <input type="text" id="phone" name="phone" required>
+
+            <label for="purpose">Цель поездки:</label>
+            <select id="purpose" name="purpose" required>
+                <option value="Туризм">Туризм</option>
+                <option value="Работа">Работа</option>
+                <option value="Учёба">Учёба</option>
+                <option value="Другое">Другое</option>
+            </select>
+
+            <label for="additionalInfo">Дополнительная информация:</label>
+            <textarea id="additionalInfo" name="additionalInfo"></textarea>
+
+            <!-- ВАЖНО: Изменили ID на "photoFile", чтобы не конфликтовать с блоком "photo" -->
+            <label for="photoFile">Загрузите фото:</label>
+            <input type="file" id="photoFile" name="photoFile" accept="image/*" required>
+
+            <button type="button" onclick="submitForm()">Отправить</button>
+        </form>
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
