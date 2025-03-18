@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Калькулятор фигур</title>
+  <!-- Подключаем шрифт Poppins с Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
+    rel="stylesheet"
+  >
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h1>Калькулятор фигур</h1>
+  
+  <div class="main-container">
+    <!-- Левая колонка: поля ввода и результат -->
+    <div class="left-column">
+      
+      <div class="input-row">
+        <label for="shapeSelect">Выберите фигуру:</label>
+        <select id="shapeSelect">
+          <option value="square">Квадрат</option>
+          <option value="rectangle">Прямоугольник</option>
+          <option value="circle">Круг</option>
+          <option value="equilateralTriangle">Равносторонний треугольник</option>
+          <option value="rightTriangle">Прямоугольный треугольник</option>
+          <option value="generalTriangle">Треугольник (3 стороны)</option>
+          <option value="rhombus">Ромб</option>
+          <option value="parallelogram">Параллелограмм</option>
+          <option value="trapezoid">Трапеция</option>
+          <option value="ellipse">Эллипс</option>
+          <option value="sector">Сектор</option>
+          <option value="annulus">Кольцо</option>
+          <option value="pentagon">Правильный пятиугольник</option>
+          <option value="hexagon">Правильный шестиугольник</option>
+          <option value="octagon">Правильный восьмиугольник</option>
+        </select>
+      </div>
+
+      <!-- Здесь динамически создаются поля ввода для конкретной фигуры -->
+      <div id="inputs"></div>
+
+      <div class="input-row">
+        <div class="input-group">
+          <label for="areaInput">Площадь (если известна):</label>
+          <input type="number" id="areaInput" placeholder="Площадь" min="0" step="any" />
+        </div>
+        <div class="input-group">
+          <label for="perimeterInput">Периметр (если известен):</label>
+          <input type="number" id="perimeterInput" placeholder="Периметр" min="0" step="any" />
+        </div>
+      </div>
+
+      <button id="calculateBtn">Рассчитать</button>
+
+      <!-- Результаты выводим здесь -->
+      <div class="result" id="result"></div>
+    </div>
+
+    <!-- Правая колонка: отрисовка фигуры -->
+    <div class="right-column">
+      <canvas id="canvas" width="600" height="600"></canvas>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

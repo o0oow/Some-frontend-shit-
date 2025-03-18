@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <title>Конструктор диаграм</title>
+  <!-- Подключаем Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    /* 1) Основные стили страницы */
+    body {
+      margin: 0;
+      padding: 0;
+      /* Лёгкий градиент фона */
+      background: linear-gradient(to right, #f0f0f0, #fafafa);
+      font-family: Arial, sans-serif;
+    }
+
+    /* 2) Заголовок по центру, побольше шрифт, цвет */
+    h1 {
+      text-align: center;
+      col #or:333;
+      margin-top: 20px;
+      margin-bottom: 20px;
+      font-size: 2em;
+    }
+
+    /* 3) Контейнер для всего содержимого, центрируем */
+    .wrapper {
+      max-width: 1200px;  /* ограничиваем ширину контента */
+      margin: 0 auto;     /* выравниваем по центру */
+      padding: 0 20px;    /* боковые отступы */
+    }
+
+    /* 4) Контейнер, в котором слева элементы управления, справа диаграмма */
+    .container {
+      display: flex;
+      gap: 20px;
+      justify-content: center;  /* выравниваем оба блока по центру горизонтали */
+      align-items: flex-start;  /* верхние края на одном уровне */
+      flex-wrap: wrap;          /* при узком экране блоки уйдут друг под друга */
+    }
+
+    /* 5) Блок управления слева */
+    .controls {
+      width: 220px;
+      background-color: #fff;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    /* Группы полей управления */
+    .control-group {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 5px;
+    }
+
+    /* Дополнительный класс, чтобы поля xMin/xMax, yMin/yMax шли вертикально */
+    .bl {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    /* Подписи */
+    label {
+      font-weight: bold;
+      color: #555;
+      min-width: 60px;
+    }
+
+    /* Поля ввода */
+    input[type="number"] {
+      width: 60px;
+      padding: 4px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      text-align: center;
+    }
+
+    /* Чекбокс "Сетка" */
+    #grid {
+      transform: scale(1.2);
+      cursor: pointer;
+    }
+
+    /* Кнопка "Сгенерировать" */
+    #generateChart {
+      background-color: #4CAF50;
+      color: #fff;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 4px;
+      font-size: 1em;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    #generateChart:hover {
+      background-color: #45a049;
+    }
+
+    /* 6) Блок для диаграммы (canvas) справа */
+    .chart-container {
+      width: 600px;    /* фиксированная ширина */
+      height: 600px;   /* фиксированная высота */
+      border-radius: 8px;
+      background-color: #fff;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Заставляем canvas вписываться в контейнер */
+    .chart-container canvas {
+      width: 100%;
+      height: 100%;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Конструктор диаграм</h1>
+  <div class="wrapper">
+    <div class="container">
+      <!-- ЛЕВАЯ ЧАСТЬ: ЭЛЕМЕНТЫ УПРАВЛЕНИЯ -->
+      <div class="controls">
+        <div class="control-group">
+          <label for="chartType">Тип:</label>
+          <select id="chartType">
+            <option value="line">Линейная</option>
+            <option value="bar">Столбчатая</option>
+            <option value="scatter">Точечная (scatter)</option>
+          </select>
+        </div>
+
+        <div class="control-group">
+          <label for="functionSelect">Функция:</label>
+          <select id="functionSelect">
+            <option value="sin">sin(x)</option>
+            <option value="cos">cos(x)</option>
+            <option value="random">Случайная</option>
+          </select>
+        </div>
+
+        <div class="control-group">
+          <div class="bl">
+            <label for="xMin">X min:</label>
+            <input type="number" id="xMin" value="-5" />
+          </div>
+          <div class="bl">
+            <label for="xMax">X max:</label>
+            <input type="number" id="xMax" value="5" />
+          </div>
+        </div>
+
+        <div class="control-group">
+          <div class="bl">
+            <label for="yMin">Y min:</label>
+            <input type="number" id="yMin" value="-2" />
+          </div>
+          <div class="bl">
+            <label for="yMax">Y max:</label>
+            <input type="number" id="yMax" value="2" />
+          </div>
+        </div>
+
+        <div class="control-group">
+          <label for="grid">Сетка:</label>
+          <input type="checkbox" id="grid" checked />
+        </div>
+
+        <button id="generateChart">Сгенерировать</button>
+      </div>
+
+      <!-- ПРАВАЯ ЧАСТЬ: КОНТЕЙНЕР ДЛЯ DIAGRAM -->
+      <div class="chart-container">
+        <canvas id="myChart"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <!-- Подключаем скрипт с логикой -->
+  <script src="script.js"></script>
+</body>
+</html>
